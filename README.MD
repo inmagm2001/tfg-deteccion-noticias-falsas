@@ -1,129 +1,148 @@
-# Aplicación Shiny para Python
+# Aplicación Shiny en Python
 
-Esta aplicación web está desarrollada con Shiny para Python y proporciona una interfaz interactiva para el análisis de datos.
+Esta aplicación ha sido desarrollada con [Shiny para Python](https://shiny.posit.co/py/) y proporciona una interfaz interactiva para la clasificación automática de noticias falsas.
 
-## Requisitos Previos
+---
 
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
-
-## Instalación y Ejecución
+## Requisitos previos
 
 ### Windows
 
-#### Método automático (recomendado)
+No es necesario tener Python ni pip instalados manualmente. El script `iniciar_app.bat` se encarga de comprobar si hay una instalación de Python 3.11, descargarla en caso de no estar disponible, crear el entorno virtual, instalar las dependencias y ejecutar la aplicación.
 
-1. Clona o descarga este repositorio
-2. Asegúrate de tener el archivo `requirements.txt` en la carpeta del proyecto
-3. Ejecuta el archivo `iniciar_app.bat` haciendo doble clic
+### Linux/macOS
 
-El script automáticamente se encarga de crear el entorno virtual, instalar las dependencias y ejecutar la aplicación.
+Es necesario contar con una instalación previa de Python 3 y pip. Se recomienda verificarlo mediante los siguientes comandos:
+
+```bash
+python3 --version
+pip --version
+```
+
+---
+
+## Instalación y ejecución
+
+### Windows
+
+#### Método automático
+
+1. Clonar o descargar este repositorio.
+2. Asegurarse de que `requirements.txt` se encuentra en el directorio raíz del proyecto.
+3. Ejecutar el archivo `iniciar_app.bat` con doble clic.
+
+El script creará el entorno virtual, instalará las dependencias y lanzará la aplicación.
 
 #### Método manual
 
-Abre la línea de comandos (CMD) o PowerShell:
+Abrir CMD o PowerShell y ejecutar:
 
 ```cmd
-# Crear entorno virtual
 python -m venv venv
-
-# Activar entorno virtual
 venv\Scripts\activate
-
-# Instalar dependencias
 pip install -r requirements.txt
-
-# Ejecutar la aplicación
-python app.py
+python app/app.py
 ```
+
+---
 
 ### Linux/macOS
 
 #### Método automático
 
 1. Dar permisos de ejecución al script:
+
 ```bash
 chmod +x iniciar_app.sh
 ```
 
-2. Ejecutar el script:
+2. Ejecutarlo desde la terminal:
+
 ```bash
 ./iniciar_app.sh
 ```
 
 #### Método manual
 
-Abrir terminal:
-
 ```bash
-# Crear entorno virtual
 python3 -m venv venv
-
-# Activar entorno virtual
 source venv/bin/activate
-
-# Instalar dependencias
 pip install -r requirements.txt
-
-# Ejecutar la aplicación
-python app.py
+python3 app/app.py
 ```
 
-## Estructura del Proyecto
+---
+
+## Estructura del proyecto
 
 ```
-proyecto/
-├── app.py                 # Archivo principal de la aplicación
-├── requirements.txt       # Lista de dependencias
-├── iniciar_app.bat       # Script para Windows
-├── iniciar_app.sh        # Script para Linux/macOS
-├── README.md             # Documentación
-└── venv/                 # Entorno virtual (generado automáticamente)
+tfg_fakenews/
+├── app/ # Código fuente de la aplicación
+├── data/ # Datos usados en el proyecto
+├── models/ # Modelos entrenados y guardados
+├── notebooks/ # Notebooks para análisis y experimentos
+├── src/ # Código fuente adicional
+├── requirements.txt # Archivo con las dependencias del proyecto
+├── iniciar_app_linux.sh # Script para iniciar la app en Linux/macOS
+├── iniciar_app_windows.bat# Script para iniciar la app en Windows
+├── README.md # Documentación del proyecto
 ```
 
-## Configuración de Dependencias
+---
 
-El archivo `requirements.txt` incluiye lo necesario:
+## Acceso a la aplicación
 
-
-## Acceso a la Aplicación
-
-Una vez iniciada la aplicación, estará disponible en el navegador web en:
+Una vez iniciada, la aplicación estará disponible en el navegador en:
 
 ```
-http://localhost:8000
+https://127.0.0.1:8000
 ```
 
-La dirección exacta se mostrará en la consola al iniciar.
+La dirección exacta se mostrará en consola tras el arranque.
 
-## Detener la Aplicación
+---
 
-Para finalizar la ejecución, presiona `Ctrl + C` en la ventana de comandos o terminal.
+## Finalización de la ejecución
 
-## Resolución de Problemas
+Para detener la aplicación, basta con presionar `Ctrl + C` en la terminal o ventana de comandos.
+
+---
+
+## Resolución de problemas
 
 ### "python no se reconoce como comando"
 
-**Windows:**
-- Verificar que Python esté instalado y en el PATH del sistema
-- Intentar con `py` en lugar de `python`
+**Windows**:  
+Comprobar que Python está correctamente instalado y añadido al PATH. También se puede intentar con el comando `py`.
 
-**Linux/macOS:**
-- Usar `python3` en lugar de `python`
-- Instalar Python si es necesario: `sudo apt install python3 python3-pip`
+En caso necesario, instalar Python y pip con:
 
-### Error al activar entorno virtual
+```bash
+sudo apt install python3 python3-pip
+```
 
-**Windows:**
-- En PowerShell, ejecutar: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+---
 
-**Linux/macOS:**
-- Verificar permisos del script: `chmod +x iniciar_app.sh`
+### Error al activar el entorno virtual
 
-### ModuleNotFoundError
+**Windows (PowerShell)**:
 
-- Confirmar que el entorno virtual esté activado
-- Verificar que `requirements.txt` contenga todas las dependencias
-- Ejecutar manualmente `pip install -r requirements.txt`
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
+**Linux/macOS**:  
+Verificar que el script tiene permisos de ejecución con `chmod +x`.
 
+---
+
+### `ModuleNotFoundError`
+
+- Comprobar que el entorno virtual ha sido activado.
+- Asegurarse de haber ejecutado `pip install -r requirements.txt`.
+
+---
+
+## Licencia
+
+Este proyecto se distribuye bajo los términos de la licencia MIT.
